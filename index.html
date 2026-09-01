@@ -16,12 +16,19 @@ input,select{width:100%;padding:14px 16px;border:1px solid #ddd;border-radius:14
 @media(max-width:850px){.side{width:72px;padding:15px 7px}.brand{font-size:0}.brand:after{content:'JC';font-size:20px}.nav button{font-size:0;text-align:center}.nav button:first-letter{font-size:20px}.main{margin-right:72px;padding:18px}.cards{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.top{display:block}.search{max-width:none}.cards{grid-template-columns:1fr}}
 </style>
+  <link rel="manifest" href="manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Gana Classes">
+<link rel="apple-touch-icon" href="logo.png">
+
 </head>
 <body>
 
 <div id="auth" class="auth">
   <div class="box">
-    <div class="logo">Jana<span>Classes</span></div>
+    <div class="logo"><img src="logo.png" alt="Gana Classes" style="width: 150px; height: auto;"></div>
+
     <p class="muted" style="text-align:center">منصتك التعليمية ✨</p>
     <div id="loginForm">
       <h2>تسجيل الدخول</h2>
@@ -43,7 +50,8 @@ input,select{width:100%;padding:14px 16px;border:1px solid #ddd;border-radius:14
 </div>
 
 <div id="app" class="app hidden">
-<aside class="side">
+<div class="logo"><img src="logo.png" alt="Gana Classes" style="width: 150px; height: auto;"></div>
+
   <div class="brand">Jana <span>Classes</span></div>
   <div class="nav">
     <button class="active" onclick="page('dashboard',this)">🏠 الرئيسية</button>
