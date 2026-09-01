@@ -1,80 +1,107 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gana Classes</title>
-
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f5f7fb;
-      text-align: center;
-    }
-
-    header {
-      background: #4f46e5;
-      color: white;
-      padding: 30px 15px;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: 32px;
-    }
-
-    .subtitle {
-      font-size: 18px;
-      margin-top: 10px;
-    }
-
-    .container {
-      padding: 25px 15px;
-    }
-
-    .card {
-      background: white;
-      margin: 15px auto;
-      padding: 25px;
-      max-width: 400px;
-      border-radius: 18px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-
-    button {
-      background: #4f46e5;
-      color: white;
-      border: none;
-      padding: 12px 25px;
-      border-radius: 10px;
-      font-size: 17px;
-    }
-  </style>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Jana Classes</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f7f8fc;color:#17213b}.hidden{display:none!important}
+.auth{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;background:linear-gradient(135deg,#f0edff,#eaf9f6)}
+.box{width:min(430px,100%);background:#fff;border-radius:28px;padding:32px;box-shadow:0 15px 50px #2221}
+.logo{text-align:center;font-size:34px;font-weight:800;color:#5b46d8}.logo span{color:#139a91;display:block}
+input,select{width:100%;padding:14px 16px;border:1px solid #ddd;border-radius:14px;margin:8px 0;font-size:15px}button{border:0;border-radius:14px;padding:13px 18px;cursor:pointer;font-weight:700}.primary{background:#5b46d8;color:#fff;width:100%;margin-top:10px}.link{background:none;color:#5b46d8}.muted{color:#72798a}
+.app{min-height:100vh}.side{position:fixed;right:0;top:0;bottom:0;width:235px;background:#fff;border-left:1px solid #eee;padding:22px 15px}.brand{text-align:center;font-size:26px;font-weight:800;color:#5b46d8;margin-bottom:25px}.brand span{color:#139a91}.nav button{display:block;width:100%;background:none;text-align:right;margin:4px 0;color:#28334b}.nav button:hover,.nav button.active{background:#f0edff;color:#5b46d8}
+.main{margin-right:235px;padding:28px}.top{display:flex;justify-content:space-between;gap:15px;align-items:center;margin-bottom:25px}.search{max-width:330px;background:#fff}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:#fff;border:1px solid #eee;border-radius:22px;padding:22px;box-shadow:0 5px 20px #24304a08}.card h2{margin-top:5px}.action{background:#fff;border:1px solid #5b46d8;color:#5b46d8}.tag{display:inline-block;background:#e9f7f4;color:#177c72;padding:6px 10px;border-radius:20px;font-size:12px}
+.stat{font-size:34px;font-weight:800;color:#5b46d8}.avatar{width:45px;height:45px;border-radius:50%;background:#eee8ff;display:flex;align-items:center;justify-content:center}
+@media(max-width:850px){.side{width:72px;padding:15px 7px}.brand{font-size:0}.brand:after{content:'JC';font-size:20px}.nav button{font-size:0;text-align:center}.nav button:first-letter{font-size:20px}.main{margin-right:72px;padding:18px}.cards{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.top{display:block}.search{max-width:none}.cards{grid-template-columns:1fr}}
+</style>
 </head>
-
 <body>
 
-  <header>
-    <h1>🎓 Gana Classes</h1>
-    <div class="subtitle">منصتك التعليمية الممتعة</div>
-  </header>
-
-  <div class="container">
-
-    <div class="card">
-      <h2>🔬 علوم</h2>
-      <p>الصف الرابع الابتدائي</p>
-      <button>ابدأ التعلم</button>
+<div id="auth" class="auth">
+  <div class="box">
+    <div class="logo">Jana<span>Classes</span></div>
+    <p class="muted" style="text-align:center">منصتك التعليمية ✨</p>
+    <div id="loginForm">
+      <h2>تسجيل الدخول</h2>
+      <input id="loginEmail" type="email" placeholder="البريد الإلكتروني">
+      <input id="loginPass" type="password" placeholder="كلمة المرور">
+      <button class="primary" onclick="login()">دخول</button>
+      <p style="text-align:center">لسه جديدة؟ <button class="link" onclick="toggleAuth()">اعملي حساب</button></p>
     </div>
-
-    <div class="card">
-      <h2>🌍 Science</h2>
-      <p>Grade 4</p>
-      <button>Start Learning</button>
+    <div id="signupForm" class="hidden">
+      <h2>إنشاء حساب طالب</h2>
+      <input id="name" placeholder="اسم الطالب">
+      <input id="email" type="email" placeholder="البريد الإلكتروني">
+      <input id="pass" type="password" placeholder="كلمة المرور">
+      <select id="grade"><option>Grade 1</option><option>Grade 2</option><option>Grade 3</option><option selected>Grade 4</option><option>Grade 5</option><option>Grade 6</option></select>
+      <button class="primary" onclick="signup()">إنشاء الحساب</button>
+      <p style="text-align:center">عندي حساب <button class="link" onclick="toggleAuth()">تسجيل الدخول</button></p>
     </div>
-
   </div>
+</div>
 
-</body>
-</html>
+<div id="app" class="app hidden">
+<aside class="side">
+  <div class="brand">Jana <span>Classes</span></div>
+  <div class="nav">
+    <button class="active" onclick="page('dashboard',this)">🏠 الرئيسية</button>
+    <button onclick="page('courses',this)">📚 المواد</button>
+    <button onclick="page('quizzes',this)">📝 الاختبارات</button>
+    <button onclick="page('homework',this)">📋 الواجبات</button>
+    <button onclick="page('progress',this)">📊 تقدمي</button>
+    <button onclick="page('profile',this)">👤 حسابي</button>
+    <button onclick="logout()">🚪 خروج</button>
+  </div>
+</aside>
+<main class="main">
+<section id="dashboard">
+  <div class="top"><div><h1 id="welcome">أهلاً 👋</h1><p class="muted">جاهزة نكمل التعلم؟</p></div><input class="search" placeholder="🔎 ابحثي عن درس..."></div>
+  <div class="cards">
+    <div class="card"><span class="tag">المادة الحالية</span><h2>Science 🧪</h2><p class="muted">Unit 1 — Living Systems</p><button class="action" onclick="lesson()">كمّلي الدرس</button></div>
+    <div class="card"><h3>التقدم الكلي</h3><div class="stat">60%</div><p class="muted">استمري، إنتِ ممتازة!</p></div>
+    <div class="card"><h3>النقاط ⭐</h3><div class="stat">120</div><p class="muted">4 شارات مكتسبة</p></div>
+  </div>
+  <h2 style="margin-top:30px">موادك</h2>
+  <div class="cards"><div class="card"><h2>🧪 Science</h2><p>6 دروس متاحة</p><button class="action" onclick="lesson()">فتح</button></div><div class="card"><h2>📐 Math</h2><p>8 دروس متاحة</p><button class="action" onclick="page('courses')">فتح</button></div><div class="card"><h2>🔤 English</h2><p>7 دروس متاحة</p><button class="action" onclick="page('courses')">فتح</button></div></div>
+</section>
+
+<section id="courses" class="hidden"><h1>المواد 📚</h1><p class="muted">المواد الخاصة بصفك</p><div class="cards"><div class="card"><h2>🧪 Science</h2><p>Term 1 · 6 lessons</p><button class="action" onclick="lesson()">عرض الدروس</button></div><div class="card"><h2>📐 Math</h2><p>Term 1 · 8 lessons</p></div><div class="card"><h2>🔤 English</h2><p>Term 1 · 7 lessons</p></div><div class="card"><h2>🔆 Arabic</h2><p>Term 1 · 9 lessons</p></div></div></section>
+
+<section id="lesson" class="hidden"><button class="action" onclick="page('courses')">← رجوع</button><div class="card" style="margin-top:15px"><span class="tag">Grade 4 · Science · Term 1</span><h1>The Five Senses</h1><p class="muted">الدرس الأول — الحواس الخمس</p><div style="height:240px;border-radius:20px;background:linear-gradient(135deg,#e7f7f4,#eee9ff);display:flex;align-items:center;justify-content:center;font-size:60px">▶️</div><h2>شرح الدرس</h2><p>هنا هنضيف الشرح والفيديو الحقيقيين الخاصين بـ Jana Classes.</p><button class="primary" style="width:auto" onclick="completeLesson()">✓ تم إنهاء الدرس</button></div></section>
+
+<section id="quizzes" class="hidden"><h1>الاختبارات 📝</h1><div class="card"><h2>Science — The Five Senses</h2><p>اختبار قصير من 5 أسئلة.</p><button class="action" onclick="quiz()">ابدئي</button></div></section>
+<section id="homework" class="hidden"><h1>الواجبات 📋</h1><div class="card"><h2>واجب Science</h2><p class="muted">تدريبات Unit 1</p><span class="tag">لم يتم التسليم</span></div></section>
+<section id="progress" class="hidden"><h1>تقدمي 📊</h1><div class="cards"><div class="card"><h3>الدروس</h3><div class="stat" id="lessonProgress">60%</div></div><div class="card"><h3>الاختبارات</h3><div class="stat">85%</div></div><div class="card"><h3>النقاط</h3><div class="stat" id="points">120</div></div></div></section>
+<section id="profile" class="hidden"><h1>حسابي 👤</h1><div class="card"><div class="avatar">👩‍🎓</div><h2 id="profileName">الطالب</h2><p id="profileGrade" class="muted">Grade 4</p><button class="action" onclick="logout()">تسجيل الخروج</button></div></section>
+</main></div>
+
+<script>
+let user=JSON.parse(localStorage.getItem('janaUser')||'null');
+function toggleAuth(){document.getElementById('loginForm').classList.toggle('hidden');document.getElementById('signupForm').classList.toggle('hidden')}
+function signup(){
+ let name=document.getElementById('name').value.trim(),email=document.getElementById('email').value.trim(),pass=document.getElementById('pass').value,grade=document.getElementById('grade').value;
+ if(!name||!email||!pass){alert('اكتبي البيانات كلها');return}
+ user={name,email,pass,grade,progress:60,points:120};localStorage.setItem('janaUser',JSON.stringify(user));start();
+}
+function login(){
+ let email=document.getElementById('loginEmail').value.trim(),pass=document.getElementById('loginPass').value;
+ let saved=JSON.parse(localStorage.getItem('janaUser')||'null');
+ if(saved&&saved.email===email&&saved.pass===pass){user=saved;start()}else alert('بيانات الدخول غير صحيحة أو الحساب غير موجود.');
+}
+function start(){
+ document.getElementById('auth').classList.add('hidden');document.getElementById('app').classList.remove('hidden');
+ document.getElementById('welcome').textContent='أهلاً يا '+user.name+' 👋';document.getElementById('profileName').textContent=user.name;document.getElementById('profileGrade').textContent=user.grade;
+}
+function page(id,btn){
+ ['dashboard','courses','lesson','quizzes','homework','progress','profile'].forEach(x=>document.getElementById(x).classList.toggle('hidden',x!==id));
+ document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');window.scrollTo(0,0);
+}
+function lesson(){page('lesson')}
+function completeLesson(){user.progress=Math.min(100,user.progress+5);user.points+=10;localStorage.setItem('janaUser',JSON.stringify(user));document.getElementById('lessonProgress').textContent=user.progress+'%';document.getElementById('points').textContent=user.points;alert('برافو! اتسجل الدرس كمكتمل ⭐');}
+function quiz(){alert('النسخة التالية هنضيف فيها الأسئلة الحقيقية والنتيجة وحفظ الدرجات.')}
+function logout(){localStorage.removeItem('janaUser');location.reload()}
+if(user)start();
+</script>
+</body></html>
