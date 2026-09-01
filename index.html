@@ -105,7 +105,7 @@ function start(){
 function page(id,btn){
  ['dashboard','courses','lesson','quizzes','homework','progress','profile'].forEach(x=>document.getElementById(x).classList.toggle('hidden',x!==id));
  document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');window.scrollTo(0,0);
-  
+  }
   page('lesson');function lesson(){
   page('lesson');
   let userGrade = (typeof user !== 'undefined' && user && user.grade) ? user.grade : 'Grade 1';
