@@ -105,42 +105,26 @@ function start(){
 function page(id,btn){
  ['dashboard','courses','lesson','quizzes','homework','progress','profile'].forEach(x=>document.getElementById(x).classList.toggle('hidden',x!==id));
  document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');window.scrollTo(0,0);
-}
-function lesson(){
+  
+  page('lesson');function lesson(){
   page('lesson');
   let userGrade = (typeof user !== 'undefined' && user && user.grade) ? user.grade : 'Grade 1';
   let videoContainer = document.getElementById('lesson');
   if(!videoContainer) return;
   
-  let videoUrl = "";
-  if(userGrade === "Grade 1" || userGrade === "1") {
-    videoUrl = "https://vimeo.com"; 
-  } else if(userGrade === "Grade 2" || userGrade === "2") {
-    videoUrl = "https://vimeo.com";
-  } else if(userGrade === "Grade 3" || userGrade === "3") {
-    videoUrl = "https://vimeo.com";
-  } else if(userGrade === "Grade 4" || userGrade === "4") {
-    videoUrl = "https://vimeo.com";
-  } else if(userGrade === "Grade 5" || userGrade === "5") {
-    videoUrl = "https://vimeo.com";
-  } else if(userGrade === "Grade 6" || userGrade === "6") {
-    videoUrl = "https://vimeo.com";
-  }
+  // الكود ده هيخلي المنصة تفتح صفحة يوتيوب الشرح الرسمية في خطوة واحدة
+  let searchUrl = "https://youtube.com" + encodeURIComponent("الدرس الاول لغة عربية الصف " + (userGrade === "Grade 1" ? "الاول" : userGrade === "Grade 2" ? "الثاني" : userGrade === "Grade 3" ? "الثالث" : userGrade === "Grade 4" ? "الرابع" : userGrade === "Grade 5" ? "الخامس" : "السادس") + " الابتدائي");
 
   videoContainer.innerHTML = `
-    <div style="padding:20px; text-align:center; background:#fff; min-height:100vh;">
+    <div style="padding:40px 20px; text-align:center; background:#fff; min-height:100vh;">
       <h2 style="color:#ff69b4; margin-bottom:20px; font-family:Arial;">الدرس الأول في اللغة العربية</h2>
-      <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; max-width:100%; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
-        <iframe src="${videoUrl}" style="position:absolute; top:0; left:0; width:100%; height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-      </div>
-      <button onclick="page('dashboard')" style="margin-top:30px; background:#ff69b4; color:#fff; border:none; padding:12px 30px; border-radius:25px; font-size:16px; font-weight:bold; cursor:pointer;">العودة للرئيسية</button>
+      <p style="color:#555; margin-bottom:30px; font-size:16px;">اضغط على الزر بالأسفل لفتح فيديو الشرح فوراً</p>
+      <a href="${searchUrl}" target="_blank" style="background:#ff69b4; color:#fff; text-decoration:none; padding:15px 40px; border-radius:25px; font-size:18px; font-weight:bold; display:inline-block; box-shadow:0 4px 10px rgba(255,105,180,0.4);">▶ فتح فيديو الشرح</a>
+      <br><br>
+      <button onclick="page('dashboard')" style="margin-top:20px; background:#f0f0f0; color:#333; border:none; padding:10px 25px; border-radius:25px; font-size:14px; cursor:pointer;">العودة للرئيسية</button>
     </div>
   `;
 }
 
-function completeLesson(){user.progress=Math.min(100,user.progress+5);user.points+=10;localStorage.setItem('janaUser',JSON.stringify(user));document.getElementById('lessonProgress').textContent=user.progress+'%';document.getElementById('points').textContent=user.points;alert('برافو! اتسجل الدرس كمكتمل ⭐');}
-function quiz(){alert('النسخة التالية هنضيف فيها الأسئلة الحقيقية والنتيجة وحفظ الدرجات.')}
-function logout(){localStorage.removeItem('janaUser');location.reload()}
-if(user)start();
-</script>
-</body></html>
+
+  
